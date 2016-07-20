@@ -32,10 +32,16 @@ namespace SelfServicePasswordManagement.Controllers
 
             try
             {
-                string domain = ConfigurationManager.AppSettings["Domain"];
-                user = user.Replace(domain + "\\", String.Empty);
-                user = user.Replace("@" + domain, String.Empty);
+                if (user.Contains("\\"))
+                {
+                    user = user.Substring(user.IndexOf("\\") + 1);
+                }
 
+                if (user.Contains("@"))
+                {
+                    user = user.Substring(0, user.IndexOf("@"));
+                }
+                
                 ChangePasswordInternal(user, oldPass, newPass);
                 return RedirectToAction("success");
             }
