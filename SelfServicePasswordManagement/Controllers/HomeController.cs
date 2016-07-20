@@ -59,7 +59,7 @@ namespace SelfServicePasswordManagement.Controllers
 
         public ActionResult Fail()
         {
-            ViewBag.Message = "Make sure it meets the complexity requirements (10+ chars, uppercase, lowercase and numeric chars)";
+            ViewBag.Message = "Make sure the old password is correct and that the new one meets the complexity requirements (10+ chars, uppercase, lowercase and numeric chars)";
             return View("Fail");
         }
 
